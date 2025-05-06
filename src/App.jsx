@@ -5,12 +5,14 @@ import Header from './components/header'
 import ProductCard from './components/product-card'
 import AdminPage from './pages/adminPage'
 import LoginPage from './pages/loginPage'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   
 
   return (
     <BrowserRouter>
+    <Toaster position='top-right'/>
     <Rotes path="/*">
     <Router path = "/admin/*" element ={<AdminPage/>}/>
     <Router path = "/login" element ={<LoginPage/>}/>
