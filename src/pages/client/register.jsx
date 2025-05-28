@@ -52,15 +52,17 @@ export default function RegisterPage() {
 	}
 
 	return (
-		<div className="w-full h-screen bg-[url(/login-bg.jpg)] bg-cover bg-center flex">
-			<div className="w-[50%] h-full"></div>
+		<div className="w-full h-screen bg-[url(/signup.jpeg)] bg-cover bg-center flex">
+			<div className="m-[-20px] h-full"></div>
 			<div className="w-[50%] h-full flex justify-center items-center">
 				<div className="w-[450px] h-auto py-8 px-4 backdrop-blur-xl shadow-xl rounded-xl flex flex-col items-center">
+    				<h2 className="text-4xl font-bold text-black mb-6">Sign Up</h2>
+
 					<input
 						name="firstName"
 						value={formData.firstName}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="text"
 						placeholder="First Name"
 					/>
@@ -68,7 +70,7 @@ export default function RegisterPage() {
 						name="lastName"
 						value={formData.lastName}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="text"
 						placeholder="Last Name"
 					/>
@@ -76,7 +78,7 @@ export default function RegisterPage() {
 						name="email"
 						value={formData.email}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="email"
 						placeholder="Email"
 					/>
@@ -84,7 +86,7 @@ export default function RegisterPage() {
 						name="phone"
 						value={formData.phone}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="text"
 						placeholder="Phone"
 					/>
@@ -92,7 +94,7 @@ export default function RegisterPage() {
 						name="password"
 						value={formData.password}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="password"
 						placeholder="Password"
 					/>
@@ -100,20 +102,20 @@ export default function RegisterPage() {
 						name="confirmPassword"
 						value={formData.confirmPassword}
 						onChange={handleChange}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
+						className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 						type="password"
 						placeholder="Confirm Password"
 					/>
 					<button
 						onClick={handleRegister}
-						className="w-[400px] h-[50px] bg-green-500 text-white rounded-xl cursor-pointer mt-2"
+						className="w-full p-3 mb-3 mt-3 bg-[#E41F7B] hover:bg-[#86003C] text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-50"
 					>
 						{loading ? "Registering..." : "Register"}
 					</button>
-					<p className="text-gray-600 text-center m-[10px]">
+					<p className="text-black text-center m-[10px]">
 						Already have an account?
 						&nbsp;
-						<span className="text-green-500 cursor-pointer hover:text-green-700">
+						<span className="text-[#E41F7B] hover:text-[#FF8BA0]">
 							<Link to={"/login"}>Login Now</Link>
 						</span>
 					</p>

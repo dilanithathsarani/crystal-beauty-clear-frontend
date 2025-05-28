@@ -60,15 +60,15 @@ export default function LoginPage() {
 			className="w-full h-screen bg-cover bg-center flex items-center justify-start px-25"
 			style={{ backgroundImage: "url('/log.jpeg')" }}
 		>
-			<div className="w-[90%] h-[70%] max-w-[450px] p-8 rounded-2xl backdrop-blur-2xl bg-black/20 shadow-4xl">
-				<h2 className="text-4xl font-bold text-center text-black mb-4">Login</h2>
+			<div className="w-[90%] h-[70%] max-w-[450px] py-8 px-4 backdrop-blur-4xl shadow-2xl rounded-xl flex flex-col items-center">
+				<h2 className="text-4xl font-bold text-center text-black mb-6">Login</h2>
 
 				<input
 					type="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="Email"
-					className="w-full p-3 mb-4 rounded-xl border border-black/20 bg-transparent text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
+					className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 				/>
 
 				<input
@@ -76,7 +76,7 @@ export default function LoginPage() {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					placeholder="Password"
-					className="w-full p-3 mb-4 rounded-xl border border-black/20 bg-transparent text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
+					className="w-full p-3 mb-4 rounded-xl border border-white bg-transparent text-black placeholder-gray-600 text-center focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
 				/>
 
 				<button
@@ -96,15 +96,15 @@ export default function LoginPage() {
 					{loadingGoogleLogin ? "Loading..." : "Login with Google"}
 				</button>
 
-				<div className="text-center text-sm text-black mb-2">
+				<div className="text-center text-m text-black mb-2">
 					Don't have an account?{" "}
-					<Link to="/register" className="text-[#E41F7B] hover:text-[#FF8BA0] underline">
+					<Link to="/register" className="text-[#E41F7B] hover:text-[#FF8BA0] ">
 						Register Now
 					</Link>
 				</div>
-				<div className="text-center text-sm text-black">
+				<div className="text-center text-m text-black">
 					Forgot your password?{" "}
-					<Link to="/forget" className="text-[#E41F7B] hover:text-[#FF8BA0] underline">
+					<Link to="/forget" className="text-[#E41F7B] hover:text-[#FF8BA0] ">
 						Reset Password
 					</Link>
 				</div>
