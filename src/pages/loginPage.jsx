@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,106 +8,105 @@ import { GrGoogle } from "react-icons/gr";
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [loading, setLoading] = useState(false);
+	const [loadingEmailLogin, setLoadingEmailLogin] = useState(false);
+	const [loadingGoogleLogin, setLoadingGoogleLogin] = useState(false);
 	const navigate = useNavigate();
+
 	const loginWithGoogle = useGoogleLogin({
 		onSuccess: (res) => {
-			setLoading(true);
+			setLoadingGoogleLogin(true);
 			axios
 				.post(import.meta.env.VITE_BACKEND_URL + "/api/user/google", {
 					accessToken: res.access_token,
 				})
 				.then((response) => {
-					console.log("Login successful", response.data);
 					toast.success("Login successful");
 					localStorage.setItem("token", response.data.token);
-
 					const user = response.data.user;
-					if (user.role === "admin") {
-						navigate("/admin");
-					} else {
-						navigate("/");
-					}
-					setLoading(false);
+					navigate(user.role === "admin" ? "/admin" : "/");
+				})
+				.catch((error) => {
+					toast.error("Google login failed");
+				})
+				.finally(() => {
+					setLoadingGoogleLogin(false);
 				});
 		},
 	});
 
 	function handleLogin() {
-		setLoading(true);
+		setLoadingEmailLogin(true);
 		axios
 			.post(import.meta.env.VITE_BACKEND_URL + "/api/user/login", {
-				email: email,
-				password: password,
+				email,
+				password,
 			})
 			.then((response) => {
-				console.log("Login successful", response.data);
 				toast.success("Login successful");
 				localStorage.setItem("token", response.data.token);
-
 				const user = response.data.user;
-				if (user.role === "admin") {
-					navigate("/admin");
-				} else {
-					navigate("/");
-				}
-				setLoading(false);
+				navigate(user.role === "admin" ? "/admin" : "/");
 			})
 			.catch((error) => {
-				console.log("Login failed", error.response.data);
-				toast.error(error.response.data.message || "Login failed");
-				setLoading(false);
+				toast.error(error.response?.data?.message || "Login failed");
+			})
+			.finally(() => {
+				setLoadingEmailLogin(false);
 			});
-
-		console.log("Login button clicked");
 	}
+
 	return (
-		<div className="w-full h-screen bg-[url(/login-bg.jpg)] bg-cover bg-center flex">
-			<div className="w-[50%] h-full"></div>
-			<div className="  w-[50%] h-full flex justify-center items-center">
-				<div className="w-[450px] h-[600px] backdrop-blur-xl shadow-xl rounded-xl flex flex-col justify-center items-center">
-					<input
-						onChange={(e) => {
-							setEmail(e.target.value);
-						}}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
-						type="email"
-						placeholder="email"
-					/>
-					<input
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-						className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"
-						type="password"
-						placeholder="password"
-					/>
-					<button
-						onClick={handleLogin}
-						className="w-[400px] h-[50px] bg-green-500 text-white rounded-xl cursor-pointer"
-					>
-						{loading ? "Loading..." : "Login"}
-					</button>
-					<button
-						className="w-[400px] h-[50px] bg-green-500 mt-[20px] text-white rounded-xl cursor-pointer flex justify-center items-center"
-						onClick={loginWithGoogle}
-					>
-						<GrGoogle className="mr-[10px]" />
-						{loading ? "Loading..." : "Login with Google"}
-					</button>
-					<p className="text-gray-600 text-center m-[10px]">
-						Don't have an account yet? &nbsp;
-						<span className="text-green-500 cursor-pointer hover:text-green-700">
-							<Link to={"/register"}>Register Now</Link>
-						</span>
-					</p>
-					{/* forget password */}
-					<p className="text-gray-600 text-center m-[10px]">
-						Forget your password? &nbsp;
-						<span className="text-green-500 cursor-pointer hover:text-green-700">
-							<Link to={"/forget"}>Reset Password</Link>
-						</span>
-					</p>
+		<div
+			className="w-full h-screen bg-cover bg-center flex items-center justify-start px-25"
+			style={{ backgroundImage: "url('/log.jpeg')" }}
+		>
+			<div className="w-[90%] h-[70%] max-w-[450px] p-8 rounded-2xl backdrop-blur-2xl bg-black/20 shadow-4xl">
+				<h2 className="text-4xl font-bold text-center text-black mb-4">Login</h2>
+
+				<input
+					type="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					placeholder="Email"
+					className="w-full p-3 mb-4 rounded-xl border border-black/20 bg-transparent text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
+				/>
+
+				<input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					placeholder="Password"
+					className="w-full p-3 mb-4 rounded-xl border border-black/20 bg-transparent text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E41F7B]"
+				/>
+
+				<button
+					onClick={handleLogin}
+					disabled={loadingEmailLogin || loadingGoogleLogin}
+					className="w-full p-3 mb-4 bg-[#E41F7B] hover:bg-[#86003C] text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-50"
+				>
+					{loadingEmailLogin ? "Loading..." : "Login"}
+				</button>
+
+				<button
+					onClick={loginWithGoogle}
+					disabled={loadingGoogleLogin || loadingEmailLogin}
+					className="w-full p-3 mb-6 flex items-center justify-center gap-2 border border-black/40 hover:bg-[#86003C] hover:text-white text-black transition-all duration-300 rounded-xl disabled:opacity-50"
+				>
+					<GrGoogle className="text-xl" />
+					{loadingGoogleLogin ? "Loading..." : "Login with Google"}
+				</button>
+
+				<div className="text-center text-sm text-black mb-2">
+					Don't have an account?{" "}
+					<Link to="/register" className="text-[#E41F7B] hover:text-[#FF8BA0] underline">
+						Register Now
+					</Link>
+				</div>
+				<div className="text-center text-sm text-black">
+					Forgot your password?{" "}
+					<Link to="/forget" className="text-[#E41F7B] hover:text-[#FF8BA0] underline">
+						Reset Password
+					</Link>
 				</div>
 			</div>
 		</div>
