@@ -60,7 +60,7 @@ export default function LoginPage() {
 			className="w-full h-screen bg-cover bg-center flex items-center justify-start px-25"
 			style={{ backgroundImage: "url('/log.jpeg')" }}
 		>
-			<div className="w-[90%] h-[70%] max-w-[450px] py-8 px-4 backdrop-blur-4xl shadow-2xl rounded-xl flex flex-col items-center">
+			<div className="w-[90%] h-[65%] max-w-[450px] py-8 px-4 backdrop-blur-4xl shadow-2xl rounded-xl flex flex-col items-center">
 				<h2 className="text-4xl font-bold text-center text-black mb-6">Login</h2>
 
 				<input
