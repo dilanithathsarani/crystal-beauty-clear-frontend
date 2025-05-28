@@ -42,7 +42,7 @@ export default function ForgetPassword() {
         });
     }
 	return (
-		<div className="w-full h-screen bg-gray-200 flex p-2">
+		<div className="w-full h-screen bg-[url('/forgetpw.jpg')] bg-cover bg-center h-screen w-full flex p-2">
 			{
                 emailSent ?
                 <div className="w-full h-full flex items-center justify-center">\
@@ -117,13 +117,13 @@ export default function ForgetPassword() {
 
 
 				:<div className="w-full h-full flex items-center justify-center">
-					<div className="bg-white p-4 rounded shadow-md w-[400px]">
-						<h1 className="text-2xl font-bold mb-4">Forget Password</h1>
+					<div className="bg-transparent p-4 rounded shadow-xl w-[400px] h-[30%]">
+						<h1 className="text-4xl font-bold text-center text-black mb-4">Forget Password</h1>
 
 						<div className="mb-4">
 							<label
 								htmlFor="email"
-								className="block text-sm font-medium text-gray-700"
+								className="block text-sm font-medium text-gray-900"
 							>
 								Email
 							</label>
@@ -141,7 +141,7 @@ export default function ForgetPassword() {
 						</div>
 						<button
 							type="submit"
-							className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+							className="w-full p-3 mb-4 bg-[#E41F7B] hover:bg-[#86003C] text-white font-semibold rounded-xl transition-all duration-300 disabled:opacity-50"
                             onClick={sendEmail}
 						>
 							Send OTP
