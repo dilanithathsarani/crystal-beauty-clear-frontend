@@ -7,9 +7,9 @@ import CheckoutPage from "./client/checkout";
 
 export default function HomePage(){
     return(
-        <div className="w-full h-screen  ">
+        <div className="w-full h-screen bg-[#F8F6F4]">
             <Header/>
-            <div className="w-full h-[calc(100vh-70px)] min-h-[calc(100vh-70px)] ">
+            <div className="w-full h-[calc(100vh-70px)] min-h-[calc(100vh-70px)]  ">
                 <Routes path="/*">
                     <Route path="/" element={<h1>Home page</h1>}/>
                     <Route path="/products" element={<ProductsPage/>}/>

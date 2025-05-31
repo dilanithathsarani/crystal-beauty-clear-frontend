@@ -13,16 +13,14 @@ export default function ProductOverview() {
 	}
 
 	const [product, setProduct] = useState(null);
-	const [status, setStatus] = useState("loading"); // loaded, error
+	const [status, setStatus] = useState("loading");
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		console.log(import.meta.env.VITE_BACKEND_URL + "/api/product/" + params.id);
-		if (status == "loading") {
+		if (status === "loading") {
 			axios
-				.get(import.meta.env.VITE_BACKEND_URL + "/api/product/" + params.id)
+				.get(`${import.meta.env.VITE_BACKEND_URL}/api/product/${params.id}`)
 				.then((res) => {
-					console.log(res);
 					setProduct(res.data.product);
 					setStatus("loaded");
 				})
@@ -34,52 +32,60 @@ export default function ProductOverview() {
 	}, [status]);
 
 	return (
-		<div className="w-full h-full ">
-			{status == "loading" && <Loader />}
-			{status == "loaded" && (
-				<div className="w-full h-full flex flex-col lg:flex-row">
-					<h1 className="text-3xl lg:hidden  font-bold text-center mb-[40px]">
+		<div className="w-full min-h-screen bg-[#F8F6F4]">
+			{status === "loading" && <Loader />}
+			{status === "loaded" && (
+				<div className="w-full flex flex-col lg:flex-row px-4 lg:px-16 py-10 gap-10">
+					{/* Mobile Heading */}
+					<h1 className="text-3xl font-bold text-center mb-6 text-[#E41F7B] lg:hidden">
 						{product.name}
-						{" | "}
-						<span className="text-3xl mr-[20px] text-gray-500">
+						<span className="block text-lg text-gray-500">
 							{product.altNames.join(" | ")}
 						</span>
 					</h1>
 
-					<div className="w-full lg:h-full lg:w-[50%]  ">
-						{console.log(product)}
+					{/* Image Section */}
+					<div className="w-full lg:w-[65%] mt-[2%]">
 						<ImageSlider images={product.images} />
 					</div>
-					<div className="w-full lg:w-[50%] pt-[100px]  h-full  p-[40px]">
-						<h1 className="hidden lg:block text-3xl  font-bold text-center mb-[40px]">
+
+					{/* Product Info */}
+					<div className="w-full lg:w-1/2 flex flex-col justify-center px-4">
+						{/* Desktop Heading */}
+						<h1 className="hidden lg:block text-4xl font-bold text-[#E41F7B] text-center mb-6">
 							{product.name}
-							{" | "}
-							<span className="text-3xl mr-[20px] text-gray-500">
+							<span className="block text-xl text-gray-500 mt-2">
 								{product.altNames.join(" | ")}
 							</span>
 						</h1>
-						<h2 className="text-2xl mr-[20px]"></h2>
-						<div className="w-full flex justify-center mb-[40px]">
+
+						{/* Price */}
+						<div className="text-center mb-6">
 							{product.labeledPrice > product.price ? (
 								<>
-									<h2 className="text-2xl mr-[20px]">
+									<h2 className="text-3xl font-semibold text-[#E41F7B]">
 										LKR: {product.price.toFixed(2)}
 									</h2>
-									<h2 className="text-2xl line-through text-gray-500">
+									<h2 className="text-xl line-through text-gray-400 mt-1">
 										LKR: {product.labeledPrice.toFixed(2)}
 									</h2>
 								</>
 							) : (
-								<h2 className="text-2xl mr-[20px]">{product.price}</h2>
+								<h2 className="text-3xl font-semibold text-[#E41F7B]">
+									LKR: {product.price.toFixed(2)}
+								</h2>
 							)}
 						</div>
 
-						<p className="text-xl text-center text-gray-500 mb-[40px]">
+						{/* Description */}
+						<p className="text-lg text-center text-gray-600 mb-8">
 							{product.description}
 						</p>
-						<div className="w-full flex justify-center mb-[40px]">
+
+						{/* Buttons */}
+						<div className="flex justify-center gap-6">
 							<button
-								className="bg-pink-800 border cursor-pointer border-pink-800 text-white w-[200px] h-[50px] rounded-lg hover:bg-white hover:text-pink-800 transition-all duration-300 ease-in-out"
+								className="bg-[#FF8BA0] hover:bg-white text-white hover:text-[#E41F7B] border-2 border-[#FF8BA0] font-medium px-6 py-3 rounded-lg transition duration-300"
 								onClick={() => {
 									addToCart(product, 1);
 									toast.success("Product added to cart");
@@ -107,7 +113,7 @@ export default function ProductOverview() {
 										},
 									});
 								}}
-								className="bg-pink-800 border cursor-pointer border-pink-800 text-white w-[200px] h-[50px] rounded-lg hover:bg-white hover:text-pink-800 transition-all duration-300 ease-in-out ml-[20px]"
+								className="bg-[#E41F7B] hover:bg-white text-white hover:text-[#FF8BA0] border-2 border-[#E41F7B] font-medium px-6 py-3 rounded-lg transition duration-300"
 							>
 								Buy Now
 							</button>
@@ -115,7 +121,12 @@ export default function ProductOverview() {
 					</div>
 				</div>
 			)}
-			{status == "error" && <div>ERROR</div>}
+
+			{status === "error" && (
+				<div className="w-full h-full flex justify-center items-center text-red-500 font-bold text-2xl mt-10">
+					Product Not Found
+				</div>
+			)}
 		</div>
 	);
 }

@@ -30,7 +30,7 @@ export default function ProductsPage(){
         }
     }
     return(
-       <div className="h-full w-full ">
+       <div className="h-full w-full bg-[#F8F6F4]">
             <div className="w-full h-[50px] flex items-center justify-center">
                 <input type="text" placeholder="Search" value={search} className="w-[300px] h-[30px] border-2 border-gray-300 rounded-md p-2" onChange={(e)=>{setSearch(e.target.value)}}/>
                 <button className="bg-blue-500 text-white p-2 rounded-md ml-2" onClick={()=>{
