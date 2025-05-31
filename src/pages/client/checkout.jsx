@@ -104,14 +104,12 @@ export default function CheckoutPage() {
 					</div>
 				))}
 
-				{/* Summary */}
 				<div className="space-y-1 text-right">
 					<p>Total: <span className="font-semibold">LKR {getTotalForLabelledPrice().toFixed(2)}</span></p>
 					<p>Discount: <span className="font-semibold">LKR {(getTotalForLabelledPrice() - getTotal()).toFixed(2)}</span></p>
 					<p className="text-xl border-t pt-2">Net Total: <span className="font-bold text-[#E41F7B]">LKR {getTotal().toFixed(2)}</span></p>
 				</div>
 
-				{/* Input Fields */}
 				<div className="space-y-4">
 					<input
 						type="text"
@@ -135,7 +133,6 @@ export default function CheckoutPage() {
 					></textarea>
 				</div>
 
-				{/* Place Order Button */}
 				<div className="text-right">
 					<button
 						onClick={placeOrder}

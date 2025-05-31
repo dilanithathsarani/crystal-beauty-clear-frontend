@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader";
 import ProductCard from "../../components/product-card";
-import { AiOutlineClose } from "react-icons/ai"; // Importing the icon
+import { AiOutlineClose } from "react-icons/ai"; 
 
 export default function ProductsPage() {
 	const [productList, setProductList] = useState([]);
@@ -30,7 +30,6 @@ export default function ProductsPage() {
 
 	return (
 		<div className="min-h-screen w-full bg-[#F8F6F4] py-10 px-4">
-			{/* Search Section */}
 			<div className="w-full max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
 				<div className="relative w-full sm:w-[300px]">
 					<input
@@ -63,7 +62,6 @@ export default function ProductsPage() {
 				</button>
 			</div>
 
-			{/* Product Grid */}
 			{productsLoaded ? (
 				<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 place-items-center">
 					{productList.map((product) => (

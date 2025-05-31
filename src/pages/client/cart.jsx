@@ -38,7 +38,6 @@ export default function CartPage() {
 									key={index}
 									className="flex flex-col lg:flex-row items-center bg-white rounded-xl shadow p-4 relative"
 								>
-									{/* Remove Button */}
 									<button
 										className="absolute top-2 right-2 text-white bg-[#FF8BA0] hover:bg-[#E41F7B] p-2 rounded-full"
 										onClick={() => {
@@ -49,14 +48,12 @@ export default function CartPage() {
 										<TbTrash />
 									</button>
 
-									{/* Image */}
 									<img
 										src={item.image}
 										className="w-24 h-24 object-cover rounded-md"
 										alt={item.name}
 									/>
 
-									{/* Details */}
 									<div className="flex-1 lg:ml-6 mt-4 lg:mt-0 w-full">
 										<h2 className="text-lg font-semibold">{item.name}</h2>
 										<p className="text-sm text-gray-500">
@@ -65,7 +62,6 @@ export default function CartPage() {
 										<p className="text-sm text-gray-500">LKR {item.price.toFixed(2)}</p>
 									</div>
 
-									{/* Quantity */}
 									<div className="flex items-center mt-4 lg:mt-0">
 										<button
 											onClick={() => {
@@ -88,7 +84,6 @@ export default function CartPage() {
 										</button>
 									</div>
 
-									{/* Item Total */}
 									<div className="mt-4 lg:mt-0 text-right w-24 font-semibold text-gray-700">
 										LKR {(item.price * item.quantity).toFixed(2)}
 									</div>
@@ -96,7 +91,6 @@ export default function CartPage() {
 							))}
 						</div>
 
-						{/* Summary */}
 						<div className="mt-8 bg-white rounded-xl shadow p-6 space-y-2">
 							<div className="flex justify-between text-lg">
 								<span className="text-gray-600">Subtotal:</span>
@@ -114,7 +108,6 @@ export default function CartPage() {
 							</div>
 						</div>
 
-						{/* Buttons */}
 						<div className="flex justify-end mt-6 gap-4">
 							<button
 								onClick={() => navigate("/products")}

@@ -49,7 +49,6 @@ export default function ProductOverview() {
 					</div>
 
 					<div className="w-full lg:w-1/2 flex flex-col justify-center px-4">
-						{/* Desktop Heading */}
 						<h1 className="hidden lg:block text-4xl font-bold text-[#E41F7B] text-center mb-6">
 							{product.name}
 							<span className="block text-xl text-gray-500 mt-2">
