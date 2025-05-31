@@ -36,7 +36,7 @@ export default function ProductOverview() {
 			{status === "loading" && <Loader />}
 			{status === "loaded" && (
 				<div className="w-full flex flex-col lg:flex-row px-4 lg:px-16 py-10 gap-10">
-					{/* Mobile Heading */}
+					
 					<h1 className="text-3xl font-bold text-center mb-6 text-[#E41F7B] lg:hidden">
 						{product.name}
 						<span className="block text-lg text-gray-500">
@@ -44,12 +44,10 @@ export default function ProductOverview() {
 						</span>
 					</h1>
 
-					{/* Image Section */}
 					<div className="w-full lg:w-[65%] mt-[2%]">
 						<ImageSlider images={product.images} />
 					</div>
 
-					{/* Product Info */}
 					<div className="w-full lg:w-1/2 flex flex-col justify-center px-4">
 						{/* Desktop Heading */}
 						<h1 className="hidden lg:block text-4xl font-bold text-[#E41F7B] text-center mb-6">
@@ -59,15 +57,14 @@ export default function ProductOverview() {
 							</span>
 						</h1>
 
-						{/* Price */}
 						<div className="text-center mb-6">
 							{product.labeledPrice > product.price ? (
 								<>
 									<h2 className="text-3xl font-semibold text-[#E41F7B]">
-										LKR: {product.price.toFixed(2)}
+										LKR.{product.price.toFixed(2)}
 									</h2>
 									<h2 className="text-xl line-through text-gray-400 mt-1">
-										LKR: {product.labeledPrice.toFixed(2)}
+										LKR.{product.labeledPrice.toFixed(2)}
 									</h2>
 								</>
 							) : (
@@ -77,12 +74,10 @@ export default function ProductOverview() {
 							)}
 						</div>
 
-						{/* Description */}
 						<p className="text-lg text-center text-gray-600 mb-8">
 							{product.description}
 						</p>
 
-						{/* Buttons */}
 						<div className="flex justify-center gap-6">
 							<button
 								className="bg-[#FF8BA0] hover:bg-white text-white hover:text-[#E41F7B] border-2 border-[#FF8BA0] font-medium px-6 py-3 rounded-lg transition duration-300"

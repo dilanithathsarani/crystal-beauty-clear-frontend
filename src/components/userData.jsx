@@ -44,7 +44,7 @@ export default function UserData() {
 			) : (
 				<div className="h-full flex justify-center items-center flex-row">
 					<button
-						className="bg-blue-500 text-white  p-2 rounded-md hover:bg-blue-600"
+						className="bg-[#000000] text-[#FF8BA0] text-base font-semibold p-2 rounded-md hover:bg-white"
 						onClick={() => {
 							localStorage.removeItem("token");
 							setUser(null);
