@@ -15,10 +15,10 @@ export default function ProductCard({ product }) {
         <p className="text-sm text-gray-400">{product.productId}</p>
         <p className="text-lg font-semibold text-black">{product.name}</p>
         <p className="text-lg font-bold text-[#FF8BA0]">
-          {product.price.toFixed(2)}{" "}
+          {"LKR."}{product.price.toFixed(2)}{" "}
           {product.price < product.labeledPrice && (
             <span className="line-through text-sm text-gray-400 ml-2">
-              {product.labeledPrice.toFixed(2)}
+            {"LKR."}{product.labeledPrice.toFixed(2)}
             </span>
           )}
         </p>
