@@ -107,7 +107,7 @@ export default function ProductOverview() {
 										},
 									});
 								}}
-								className="bg-[#E41F7B] hover:bg-white text-white hover:text-[#FF8BA0] border-2 border-[#E41F7B] font-medium px-6 py-3 rounded-lg transition duration-300"
+								className="bg-[#E41F7B] hover:bg-white text-white hover:text-[#E41F7B] border-2 border-[#E41F7B] font-medium px-6 py-3 rounded-lg transition duration-300"
 							>
 								Buy Now
 							</button>
